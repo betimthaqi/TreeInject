@@ -21,7 +21,19 @@ def fill_tree(treeview, node):
         if ptype == 'directory':
             treeview.insert(oid, 0, text='dummy')
 
-
+def Take_input(inputurl, inputpayload, output):
+    url = inputurl.get("1.0", "end-1c")
+    payload = inputpayload.get("1.0", "end-1c")
+    target = str(url) + payload
+    try:
+        results = requests.get(url=target)
+        if "www-data" in str(results.text):
+            output.insert(END, 'OS Command Injection Successfully!')
+        else:
+            output.insert(END, "Nothing Found!")
+    except ConnectionError:
+        print("Connection Error. Try Again.")
+            
 def update_tree(event):
     treeview = event.widget
     fill_tree(treeview, treeview.focus())
