@@ -57,6 +57,42 @@ def show_tree():
     treeview.bind('<<TreeviewOpen>>', update_tree)
 
 
+def os_injection():
+    root = Toplevel(master)
+    root.title("Os command injection")
+    root.geometry("470x300")
+    l = Label(root, text="Enter the url like this \nschema://subdomain.domain.tld/path/document.extension?parameter=",
+              fg="grey",
+              )
+    inputtxt = Text(root,
+                    height=0,
+                    width=55,
+                    bg="light yellow")
+
+    l1 = Label(root, text="Enter the url payload",
+               fg="grey",
+               )
+
+    inputtxt1 = Text(root,
+                     height=0,
+                     width=25,
+                     bg="light yellow")
+
+    Output = Text(root, height=3,
+                  width=14,
+                  bg="light cyan")
+
+    Display = Button(root, height=2,
+                     width=12,
+                     text="Test",
+                     command=lambda: Take_input(inputtxt, inputtxt1, Output))
+    l.pack()
+    inputtxt.pack(pady=10)
+    l1.pack()
+    inputtxt1.pack(pady=10)
+    Display.pack(pady=10)
+    Output.pack()
+
 
 if __name__ == '__main__':
     master = Tk()
