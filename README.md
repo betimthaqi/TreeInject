@@ -52,7 +52,9 @@ Injection with custom payload expression:</p>
 
 
 
-License
-----
+## License & Copyright
 
-MIT
+©Group 46 - Durajet Mustafa, Aurel Demiraj, Betim Thaçi.
+University of Prishtina "Hasan Prishtina",  
+Department: Computer Engineering.  
+Licensed under the  [MIT License](https://github.com/durajetz/TreeInject/blob/master/LICENSE).
