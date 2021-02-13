@@ -22,11 +22,21 @@ $ python3 main.py
 #  Functionality
 <p align="center"><b><em>For the purpose of testing the program an Vulnerable website offline was used.</em></b></br></p>
 <img src="https://media4.giphy.com/media/GijNtQfpydqijSROH7/giphy.gif" alt=""  width="320px">
+
 *Choosing the function we want to implement, pops up new window*
 
 <img src="https://media0.giphy.com/media/jw6Zy69bwWX3a1obDl/giphy.gif" alt="" width="320px">
+
+*The structure of folders on the host where the application is located, which will be open after clicking on the first button*
+
 <img src="https://media4.giphy.com/media/KPRU4rIJbDxUMmjow4/giphy.gif" alt=""  width="350px">
+
+*Vulnerabilities testing through payload method*
+
 <img src="https://media4.giphy.com/media/JkzlYa6WGpphEsPr5J/giphy.gif" alt="" width="350px">
+
+*Vulnerabilities testing through expression method*
+
 License
 ----
 
