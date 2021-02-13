@@ -31,11 +31,13 @@ $ python3 main.py
 
 <img src="https://media4.giphy.com/media/KPRU4rIJbDxUMmjow4/giphy.gif" alt=""  width="350px">
 
-*Vulnerabilities testing through payload method*
-
+*Injection only giving the payload with the specific expression:*
+```
+eval(compile("""for x in range(1):\n import subprocess\n subprocess.check_output(r'COMMAND',shell=True)""",'','single'))
+```
 <img src="https://media4.giphy.com/media/JkzlYa6WGpphEsPr5J/giphy.gif" alt="" width="350px">
 
-*Vulnerabilities testing through expression method*
+*Injection with custom payload expression:*
 
 License
 ----
