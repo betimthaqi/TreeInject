@@ -23,6 +23,7 @@ def fill_tree(treeview, node):
         if ptype == 'directory':
             treeview.insert(oid, 0, text='dummy')
 
+
 def Take_input(inputurl, inputpayload, output):
     url = inputurl.get("1.0", "end-1c")
     payload = inputpayload.get("1.0", "end-1c")
@@ -35,7 +36,8 @@ def Take_input(inputurl, inputpayload, output):
             output.insert(END, "Nothing Found!")
     except ConnectionError:
         print("Connection Error. Try Again.")
-            
+
+
 def update_tree(event):
     treeview = event.widget
     fill_tree(treeview, treeview.focus())
@@ -59,8 +61,7 @@ def show_tree():
     treeview.bind('<<TreeviewOpen>>', update_tree)
 
 
-<<<<<<< HEAD
-def Take_input(inputurl, inputpayload,inputexpression,output):
+def Take_input(inputurl, inputpayload, inputexpression, output):
     url = inputurl.get("1.0", "end-1c")
     # payload = inputpayload.get("1.0", "end-1c")
     # expression = inputexpression.get("1.0", "end-1c")
@@ -86,8 +87,6 @@ def Take_input(inputurl, inputpayload,inputexpression,output):
         print("Connection Error. Try Again.")
 
 
-=======
->>>>>>> 3f743ecfc0dfd478bc86e60facecc7524941bdec
 def os_injection():
     root = Toplevel(master)
     root.title("Os command injection")
@@ -100,7 +99,6 @@ def os_injection():
                      height=0,
                      width=25,
                      bg="light yellow")
-
 
     example = ("eval(compile(\"\"\"f"
                "or x in range(1):\\n"
@@ -126,7 +124,7 @@ def os_injection():
     Display = Button(root, height=2,
                      width=12,
                      text="Test",
-                     command=lambda: Take_input(inputtxt, inputtxt1,inputtxt2, Output))
+                     command=lambda: Take_input(inputtxt, inputtxt1, inputtxt2, Output))
 
     OPTIONS = [
         "Payload",
@@ -155,7 +153,7 @@ def os_injection():
             w.destroy()
             button.destroy()
 
-    button = Button(root,text="Choose method",command=ok)
+    button = Button(root, text="Choose method", command=ok)
     button.pack()
     # button = Button(root, text="Choose method", command=ok)
     # button.pack()
@@ -169,7 +167,6 @@ def os_injection():
                     bg="light yellow")
     l.pack()
     inputtxt.pack(pady=10)
-
 
 
 if __name__ == '__main__':
