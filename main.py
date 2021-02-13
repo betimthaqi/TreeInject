@@ -61,7 +61,11 @@ def show_tree():
     treeview.bind('<<TreeviewOpen>>', update_tree)
 
 
+<<<<<<< HEAD
 def Take_input(inputurl, inputpayload, inputexpression, output):
+=======
+def Take_input(inputurl, inputpayload,inputexpression,output):
+>>>>>>> 244f4ea6b14e0db7a088d45acc3cbd5abc971261
     url = inputurl.get("1.0", "end-1c")
     # payload = inputpayload.get("1.0", "end-1c")
     # expression = inputexpression.get("1.0", "end-1c")
@@ -86,7 +90,10 @@ def Take_input(inputurl, inputpayload, inputexpression, output):
     except ConnectionError:
         print("Connection Error. Try Again.")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 244f4ea6b14e0db7a088d45acc3cbd5abc971261
 def os_injection():
     root = Toplevel(master)
     root.title("Os command injection")
