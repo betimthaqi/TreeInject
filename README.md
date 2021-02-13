@@ -1,8 +1,12 @@
 # TreeInject
 
 TreeInject is a GUI app python based using module tKinter, that supports 2 functionalities
-  - Tree host dir. structure
-  - OS Command injection
+  - **Tree host dir. structure**
+  
+	  It will list contents of directories in a tree-like format. It is a recursive directory listing program that produces a depth indented listing of files.
+  - **OS Command injection**
+  
+    A web application vulnerable to Python code injection allows you to send Python code though the application to the Python interpreter on the target server.
 
 ### Installation
 
